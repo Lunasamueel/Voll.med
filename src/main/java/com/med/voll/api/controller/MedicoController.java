@@ -39,7 +39,7 @@ public class MedicoController {
         var medico = repository.getReferenceById(dados.id());
         medico.atualizaMedico(dados);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new DetalhamentoMedicoDTO(medico));
     }
 
     @DeleteMapping("/{id}")
