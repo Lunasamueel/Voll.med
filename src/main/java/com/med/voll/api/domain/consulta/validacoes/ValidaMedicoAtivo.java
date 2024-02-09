@@ -1,5 +1,6 @@
 package com.med.voll.api.domain.consulta.validacoes;
 
+import com.med.voll.api.domain.ValidacaoException;
 import com.med.voll.api.domain.consulta.AgendamentoConsultaDTO;
 import com.med.voll.api.domain.medico.MedicoRepository;
 import jakarta.validation.ValidationException;
@@ -19,7 +20,7 @@ public class ValidaMedicoAtivo implements ValidadorAgendamentoConsulta {
         
         var medicoEstaAtivo = medicoRepository.findAtivoById(dados.idMedico());
         if(!medicoEstaAtivo) {
-            throw new ValidationException("consulta nao pode ser agendada com um medico inativo");
+            throw new ValidacaoException("consulta nao pode ser agendada com um medico inativo");
         }
     }
 }

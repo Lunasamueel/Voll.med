@@ -1,5 +1,6 @@
 package com.med.voll.api.domain.consulta.validacoes;
 
+import com.med.voll.api.domain.ValidacaoException;
 import com.med.voll.api.domain.consulta.AgendamentoConsultaDTO;
 import jakarta.validation.ValidationException;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class ValidaHoraFuncionamentoClinica implements ValidadorAgendamentoConsu
         var horaFechamentoClinica = dataConsulta.getHour() > 18;
 
         if(domingo || horaAberturaClinica || horaFechamentoClinica){
-            throw new ValidationException("Consulta Fora do horario de funcionamento");
+            throw new ValidacaoException("Consulta Fora do horario de funcionamento");
         }
 
 

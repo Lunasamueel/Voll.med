@@ -1,5 +1,6 @@
 package com.med.voll.api.domain.consulta.validacoes;
 
+import com.med.voll.api.domain.ValidacaoException;
 import com.med.voll.api.domain.consulta.AgendamentoConsultaDTO;
 import com.med.voll.api.domain.consulta.ConsultaRepository;
 import jakarta.validation.ValidationException;
@@ -15,7 +16,7 @@ public class ValidaMedicoComOutraConsultaNoMesmoHorario implements ValidadorAgen
     public void validar(AgendamentoConsultaDTO dados){
         var medicoTemOutraConsultaNaMesmaHora = repository.existsByMedicoIdAndData(dados.idMedico(), dados.data());
         if(medicoTemOutraConsultaNaMesmaHora) {
-            throw new ValidationException("O medico já possui outra consulta no mesmo horario");
+            throw new ValidacaoException("O medico já possui outra consulta no mesmo horario");
         }
     }
 }

@@ -23,8 +23,8 @@ public class ConsultaController {
     @PostMapping
     @Transactional
     public ResponseEntity agendar(@RequestBody @Valid AgendamentoConsultaDTO dados) throws ValidacaoException {
-        agenda.agendar(dados);
-        return ResponseEntity.ok(new DetalhamentoConsultaDTO(null, null, null, null));
+        var dto = agenda.agendar(dados);
+        return ResponseEntity.ok(dto);
 
     }
 }

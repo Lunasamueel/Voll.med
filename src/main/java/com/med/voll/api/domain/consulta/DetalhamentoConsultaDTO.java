@@ -12,4 +12,7 @@ public record DetalhamentoConsultaDTO(
         LocalDateTime data
 ) {
 
+    public DetalhamentoConsultaDTO(Consulta consulta) {
+        this(consulta.getId(), consulta.getMedico().getId(), consulta.getPaciente().getId() , consulta.getData());
+    }
 }
